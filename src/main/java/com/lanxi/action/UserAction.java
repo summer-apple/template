@@ -1,5 +1,8 @@
 package com.lanxi.action;
 
+import com.lanxi.entity.User;
+import com.lanxi.service.impl.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,7 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserAction {
 
+    @Autowired
+    UserService userService;
 
+
+    /**
+     *  非restful参数传递
+     * @param name
+     * @return
+     */
+    @RequestMapping("/test")
+    public String test(String name){
+        return "Hello " + name;
+    }
 
 
 
