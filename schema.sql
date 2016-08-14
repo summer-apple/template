@@ -1,4 +1,6 @@
 
+-- create schema --
+CREATE SCHEMA `template` DEFAULT CHARACTER SET utf8 ;
 
 
 
@@ -24,3 +26,7 @@ CREATE TABLE `article` (
   `brief` varchar(255) DEFAULT NULL,
   `content` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
