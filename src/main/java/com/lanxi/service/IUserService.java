@@ -7,9 +7,8 @@ import com.lanxi.entity.User;
  */
 public interface IUserService {
 
-
-
-    boolean login(String username, String password);
-    boolean register(User user);
+    User login(String username, String password);
+    int register(User user);
     User getById(int id);
+    boolean update(User user);
 }

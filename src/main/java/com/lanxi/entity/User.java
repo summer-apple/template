@@ -82,4 +82,25 @@ public class User {
     public void setState(String state) {
         this.state = state == null ? null : state.trim();
     }
+
+
+    public User() {
+    }
+
+    public User(Integer id, String username, String password) {
+        this.username = username;
+        this.id = id;
+        this.password = password;
+    }
+
+    public User(Integer id, String username, String password, Integer age, String hobby, Date birthday, Date regTime, String state) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.age = age;
+        this.hobby = hobby;
+        this.birthday = birthday;
+        this.regTime = regTime;
+        this.state = state;
+    }
 }

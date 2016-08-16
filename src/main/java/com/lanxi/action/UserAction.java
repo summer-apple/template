@@ -27,7 +27,27 @@ public class UserAction {
         return "Hello " + name;
     }
 
+    @RequestMapping("/get-user")
+    public User getUserById(int id){
+        return userService.getById(id);
+    }
 
+
+    @RequestMapping("/login")
+    public User login(String username, String password){
+        return userService.login(username,password);
+    }
+
+
+    @RequestMapping("/update")
+    public boolean update(int id,String username, String password){
+        return userService.update(new User(id,username,password));
+    }
+
+    @RequestMapping("/register")
+    public int register(User user){
+        return userService.register(user);
+    }
 
 
 }
