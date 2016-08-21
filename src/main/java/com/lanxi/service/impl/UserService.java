@@ -13,10 +13,13 @@ import java.util.Date;
  */
 
 @Service
-public class UserService implements IUserService {
+public class UserService extends BaseService<User> implements IUserService {
 
     @Autowired
     private UserMapper userMapper;
+
+
+
 
     @Override
     public User login(String username, String password) {
@@ -24,30 +27,14 @@ public class UserService implements IUserService {
         if(count > 0){
             return userMapper.checkPassword(username,password);
         }
-
         return null;
     }
 
     @Override
     public int register(User user) {
         user.setRegTime(new Date());
-        return userMapper.addUser(user);
+        userMapper.addUser(user);
+        return user.getId();
     }
 
-    @Override
-    public User getById(int id) {
-
-        return userMapper.getUserById(id);
-    }
-
-    @Override
-    public boolean update(User user) {
-        try {
-            userMapper.update(user);
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-
-    }
 }

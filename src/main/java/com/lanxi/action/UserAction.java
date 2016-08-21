@@ -3,15 +3,20 @@ package com.lanxi.action;
 import com.lanxi.entity.User;
 import com.lanxi.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 
 /**
  * Created by summer on 16-8-11.
  */
 @RestController
-@RequestMapping("/user")
-public class    UserAction {
+@RequestMapping("/users")
+public class  UserAction {
 
     @Autowired
     UserService userService;
@@ -27,10 +32,27 @@ public class    UserAction {
         return "Hello " + name;
     }
 
-    @RequestMapping("/get-user")
-    public User getUserById(int id){
+
+
+    /**
+     * restful参数传递
+     * 获取所有用户
+     * @return
+     */
+    @RequestMapping(value = "/{offset}/{count}", method = RequestMethod.GET)
+    public List<User> getUserList(@PathVariable("offset") int offset, @PathVariable("count") int count){
+        return userService.getList(offset,count);
+    }
+
+
+
+
+
+    @RequestMapping(value = "/{id}")
+    public User getUserById(@PathVariable("id") int id){
         return userService.getById(id);
     }
+
 
 
     @RequestMapping("/login")
